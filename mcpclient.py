@@ -16,14 +16,18 @@ client = genai.Client(
 )
 
 server_params = StdioServerParameters(
-    command="npx",
-    args=["-y", "@philschmid/weather-mcp"],
+    command="uvx",
+    args=[
+        "mcp-server-motherduck",
+        "--db-path",
+        "my_local_db.duckdb",
+    ],
 )
 
 async def run():
     async with stdio_client(server_params) as (read, write):
         async with ClientSession(read, write) as session:
-            prompt = f"北京2025年6月17日的天气怎么样？"
+            prompt = f"一共有多少张数据表？以及分别都是哪些表"
             await session.initialize()
             response = await client.aio.models.generate_content(
                 model="gemini-2.0-flash",
