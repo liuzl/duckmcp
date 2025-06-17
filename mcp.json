@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "motherduck": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-motherduck",
+        "--db-path",
+        "my_local_db.duckdb"
+      ],
+      "env": {
+      },
+      "disabled": false
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "./"
+      ],
+      "env": {
+      },
+      "disabled": false
+    }
+  }
+}
